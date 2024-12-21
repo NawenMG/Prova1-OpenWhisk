@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilazione con libcurl",
+            "type": "shell",
+            "command": "g++",  // Usa gcc o clang, in base al compilatore che stai usando
+            "args": [
+               "-o", "program",                                           // Nome del file eseguibile
+                "functionStripe.cpp",                                        // Nome del file sorgente
+                "-I${workspaceFolder}/include",                              // Include il tuo progetto
+                "-IC:/vcpkg/vcpkg/installed/x64-windows/include",            // Percorso degli header di libcurl
+                "-IC:/vcpkg/vcpkg/installed/x64-windows/include/curl",       // Percorso specifico per curl
+                "-IC:/vcpkg/vcpkg/installed/x64-windows/include/nlohmann",   // Percorso per nlohmann/json.hpp
+                "-L${workspaceFolder}/lib",                                  // Percorso delle librerie
+                "-LC:/vcpkg/vcpkg/installed/x64-windows/lib",                // Percorso delle librerie di libcurl
+                "-lcurl",                                                    // Linka la libreria libcurl
+                "-std=c++17"                                                     // Linka la libreria libcurl
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compilazione con GCC"
+        }
+    ]
+}
